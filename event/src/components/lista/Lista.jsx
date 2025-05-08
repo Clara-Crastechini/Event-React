@@ -27,8 +27,8 @@ const Lista = (props) => {
                         <tr className="item_lista">
                             <td data-cell={props.titulo}>xxxxxxxxx</td>
                             <td data-cell="Tipo Evento" style={{display: props.visibilidade}}>yyyyyyyyy</td>
-                            <td data-cell="Editar"><img src={Editar} alt="" /></td>
-                            <td data-cell="Excluir"><img src={Excluir} alt="" /></td>
+                            <td data-cell="Editar"><img src={Editar} alt="caneta" /></td>
+                            <td data-cell="Excluir"><img src={Excluir} alt="lixeira" /></td>
 
                         </tr>
 
