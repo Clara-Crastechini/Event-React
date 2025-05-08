@@ -9,15 +9,15 @@
 
 
 
-
-
-.listagem hr{
+.linha_titulo{
    max-width: 300px;
    width: 100%;
    border-style: solid;
    border-width: 1px;
-   border-color: #73061c84;
+   border-color: #ffffff84;
    margin-top: 5px;
+   margin-bottom: 20px;
+   
 }
 
 
@@ -55,6 +55,7 @@
 .item_lista td{
     /* desgrudar o item do titulo */
     padding: 20px 0 10px 0;
+    color: white;
 }
 
 .item_lista{
@@ -62,6 +63,23 @@
     border-bottom:  solid 1px #73061B20;
 
 }
+
+.listagem h1{
+    color: white;
+    font-size: medium;
+}
+
+.tabela_cabecalho th{
+    color: white;
+}
+
+/* .linha_divisoria{
+    border-style: solid;
+    border-width: 1px;
+    border-color: #ffffff84;
+    margin-top: 5px;
+    border-collapse: collapse;
+} */
 
 @media screen and (max-width: 768px){
 

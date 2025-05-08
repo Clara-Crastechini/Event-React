@@ -2,6 +2,9 @@ import Header from "../../components/header/Header";
 import Footer from "../../components/footer/Footer";
 import Lista from "../../components/lista/Lista"
 import "./CadastroTipoDeEvento.css";
+import Cadastro from "../../components/cadastro/Cadastro";
+import banner_cadastrotipoevento from "../../assets/img/cadastrotipoevento.png"
+
 
 const CadastroTipoDeEvento = () => {
     return(
@@ -9,10 +12,14 @@ const CadastroTipoDeEvento = () => {
     
     <Header/>
 
-    {/* <Cadastro/> */}
+    <Cadastro
+    img_banner={banner_cadastrotipoevento}
+    tituloCadastro = "Cadastro Tipo de Evento"
+    nomes = "Titulo"
+    visible = "none"/>
     
     <Lista
-    tituloLista = "Lista Tipo Evento"
+    tituloLista = "Tipo Evento"
     titulo = "Titulo"
     visibilidade = "none"
 

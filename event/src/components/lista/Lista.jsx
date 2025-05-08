@@ -9,7 +9,7 @@ const Lista = (props) => {
         <>
         <section className="listagem">
             <h1>{`Lista de ${props.tituloLista}`}</h1>
-            <hr />
+            <hr className="linha_titulo" />
 
 
             <div className="tabela layout_grid">
@@ -22,6 +22,7 @@ const Lista = (props) => {
                             <th>Excluir</th>
                         </tr>
                     </thead>
+                        {/* <hr className="linha_divisoria"/> */}
                     <tbody>
                         <tr className="item_lista">
                             <td data-cell={props.titulo}>xxxxxxxxx</td>
