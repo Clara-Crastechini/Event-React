@@ -1,0 +1,10 @@
+.linha_title{
+    max-width: 300px;
+    width: 100%;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #83202084;
+    margin-top: 5px;
+    margin-bottom: 20px;
+    
+}

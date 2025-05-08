@@ -19,13 +19,14 @@ const Lista = (props) => {
                             <th>{props.titulo}</th>
                             <th style={{display:props.visibilidade}}>Tipo Evento</th>
                             <th>Editar</th>
-                            <th>Excluir</th>
+                            <th>Deletar</th>
                         </tr>
                     </thead>
                         {/* <hr className="linha_divisoria"/> */}
                     <tbody>
                         <tr className="item_lista">
                             <td data-cell={props.titulo}>xxxxxxxxx</td>
+                            <td data-cell="Tipo Evento" style={{display: props.visibilidade}}>yyyyyyyyy</td>
                             <td data-cell="Editar"><img src={Editar} alt="" /></td>
                             <td data-cell="Excluir"><img src={Excluir} alt="" /></td>
 

@@ -12,10 +12,10 @@ const Header = () => {
                 </Link>
 
             <nav className="nav_header">
-            <Link className="link_header" to="./Home">Home</Link>
-            <Link className="link_header" to="./Eventos">Eventos</Link>
-            <Link className="link_header" to="./Usuariod">Usuarios</Link>
-            <Link className="link_header" to="./Contatos">Contatos</Link>
+            <Link className="link_header" to="/">Home</Link>
+            <Link className="link_header" to="/Eventos">Eventos</Link>
+            <Link className="link_header" to="/TipoUsuarios">Usuarios</Link>
+            <Link className="link_header" to="/Contatos">Contatos</Link>
             <Link className="link_header" to=""></Link>
             </nav>
 

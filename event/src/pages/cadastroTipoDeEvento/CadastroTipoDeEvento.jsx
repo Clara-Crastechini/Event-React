@@ -9,14 +9,14 @@ import banner_cadastrotipoevento from "../../assets/img/cadastrotipoevento.png"
 const CadastroTipoDeEvento = () => {
     return(
     <>
-    
     <Header/>
 
     <Cadastro
     img_banner={banner_cadastrotipoevento}
     tituloCadastro = "Cadastro Tipo de Evento"
     nomes = "Titulo"
-    visible = "none"/>
+    visible = "none"
+    selecione="Selecione"/>
     
     <Lista
     tituloLista = "Tipo Evento"

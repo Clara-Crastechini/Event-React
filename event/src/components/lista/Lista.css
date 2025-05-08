@@ -71,6 +71,9 @@
 
 .tabela_cabecalho th{
     color: white;
+    font-size: 18px;
+    padding: 20px 0px;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.5);
 }
 
 /* .linha_divisoria{
