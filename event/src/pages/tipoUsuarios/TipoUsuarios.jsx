@@ -12,12 +12,12 @@ const TipoUsuarios = () => {
 
         <Cadastro
             img_banner={banner_cadastroUsuario}
-            tituloCadastro="Cadastro Tipo de Usuario"
+            titulo_cadastro="Cadastro Tipo de Usuario"
             nomes="Titulo"
             visible="none"/>
 
         <Lista
-            tituloLista="Tipo Usuario"
+            titulo_lista="Tipo Usuario"
             titulo="Titulo"
             visibilidade="none"
 

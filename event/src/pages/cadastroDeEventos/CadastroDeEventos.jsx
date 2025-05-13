@@ -11,12 +11,12 @@ const CadastroDeEventos = () => {
         
         <Cadastro
         img_banner={banner_cadastroEvento}
-        tituloCadastro = "Cadastro de Evento"
+        titulo_cadastro = "Cadastro de Evento"
         nomes = "Nome"
         />
 
         <Lista
-        tituloLista = "Eventos"
+        titulo_lista = "Eventos"
         titulo = "Nome"
         visibilidade/>
 

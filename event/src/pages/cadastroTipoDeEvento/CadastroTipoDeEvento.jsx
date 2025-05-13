@@ -13,13 +13,13 @@ const CadastroTipoDeEvento = () => {
 
     <Cadastro
     img_banner={banner_cadastrotipoevento}
-    tituloCadastro = "Cadastro Tipo de Evento"
+    titulo_cadastro = "Cadastro Tipo de Evento"
     nomes = "Titulo"
     visible = "none"
     selecione="Selecione"/>
     
     <Lista
-    tituloLista = "Tipo Evento"
+    titulo_lista = "Tipo Evento"
     titulo = "Titulo"
     visibilidade = "none"
 

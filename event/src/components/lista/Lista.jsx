@@ -8,7 +8,7 @@ const Lista = (props) => {
     return(
         <>
         <section className="listagem">
-            <h1>{`Lista de ${props.tituloLista}`}</h1>
+            <h1>{`Lista de ${props.titulo_lista}`}</h1>
             <hr className="linha_titulo" />
 
 
