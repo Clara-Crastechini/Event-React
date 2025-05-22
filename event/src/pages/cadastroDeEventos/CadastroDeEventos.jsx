@@ -4,7 +4,16 @@ import Header from "../../components/header/Header";
 import Lista from "../../components/lista/Lista";
 import banner_cadastroEvento from "../../assets/img/cadastroevento.png"
 
+import api from "../../Services/services";
+import Swal from 'sweetalert2';
+
 const CadastroDeEventos = () => {
+
+    async function cadastrar(params) {
+        
+    }
+
+
     return(
         <>
         <Header/>
