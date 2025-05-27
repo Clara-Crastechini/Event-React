@@ -129,7 +129,8 @@ const TipoUsuarios = () => {
                 visible="none"
                 funcCadastro={cadastrarTipoUsuario}
                 valorInput={tipoUsuario}
-                setValorInput={setTipoUsuario} />
+                setValorInput={setTipoUsuario}
+                data="none" />
 
             <Lista
                 titulo_lista="Tipo Usuario"

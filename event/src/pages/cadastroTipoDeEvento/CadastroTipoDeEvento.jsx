@@ -135,7 +135,7 @@ const CadastroTipoDeEvento = () => {
                 funcCadastro={cadastrarTipoEvento}
                 valorInput={tipoEvento}
                 setValorInput={setTipoEvento}
-
+                data="none"
                 />
 
             <Lista
@@ -145,7 +145,7 @@ const CadastroTipoDeEvento = () => {
                 
                 lista={listaTipoEvento}
 
-                tipoLista="tipoEvento"
+                tipoLista="TiposEventos"
 
                 funcEditar={editarTipoEvento}
                 funcExcluir={deletarTipoEvento}
