@@ -18,6 +18,8 @@ const CadastroDeEventos = () => {
     const [listaTipoEvento, setListaTipoEvento] = useState([])
     const [listaEvento, setListaEvento] = useState([])
 
+
+
     function alertar(icone, mensagem) {
         const Toast = Swal.mixin({
             toast: true,
@@ -58,9 +60,11 @@ const CadastroDeEventos = () => {
         }
     }
 
+
+
     async function cadastrarEvento(evt) {
         evt.preventDefault();
-        if (evento.trim() != "") {
+        if (evento.trim() !== "") {
             try {
                 await api.post("eventos", { nomeEvento: evento, idTipoEvento: tipoEvento, dataEvento: dataEvento, descricao: descricao, idInstituicao: instituicao });
                 alertar("success", "Deu certo");
@@ -78,11 +82,7 @@ const CadastroDeEventos = () => {
         }
     }
 
-
-
-
-
-    async function deletarEvento (id) {
+    async function deletarEvento(id) {
         Swal.fire({
             title: 'Tem certeza?',
             text: "Essa ação não poderá ser desfeita!",
@@ -94,7 +94,7 @@ const CadastroDeEventos = () => {
             cancelButtonText: 'Cancelar'
         }).then(async (result) => {
             if (result.isConfirmed) {
-                await api.delete(`TiposEventos/${id.idTipoEvento}`);
+                await api.delete(`Eventos/${id.idEvento}`);
                 alertar("success", "Tipo de evento excluído!");
             }
         }).catch(error => {
@@ -102,6 +102,65 @@ const CadastroDeEventos = () => {
             alertar("error", "Erro ao excluir")
         })
     }
+
+
+    async function editarEvento(evento) {
+        try {
+            const tiposOptions = listaTipoEvento
+                .map(tipo => `<option value="${tipo.idTipoEvento}" ${tipo.idTipoEvento === evento.idTipoEvento ? 'selected' : ''}>${tipo.tituloTipoEvento}</option>`)
+                .join('');
+
+            const { value } = await Swal.fire({
+                title: "Editar Tipo de Evento",
+                html: `
+        <input id="campo1" class="swal2-input" placeholder="Título" value="${evento.nomeEvento || ''}">
+        <input id="campo2" class="swal2-input" type="date" value="${evento.dataEvento?.substring(0, 10) || ''}">
+        <select id="campo3" class="swal2-select">${tiposOptions}</select>
+        <input id="campo4" class="swal2-input" placeholder="Categoria" value="${evento.descricao || ''}">
+      `,
+                showCancelButton: true,
+                confirmButtonText: "Salvar",
+                cancelButtonText: "Cancelar",
+                focusConfirm: false,
+                preConfirm: () => {
+                    const campo1 = document.getElementById("campo1").value;
+                    const campo2 = document.getElementById("campo2").value;
+                    const campo3 = document.getElementById("campo3").value;
+                    const campo4 = document.getElementById("campo4").value;
+
+                    if (!campo1 || !campo2 || !campo3 || !campo4) {
+                        Swal.showValidationMessage("Preencha todos os campos.");
+                        return false;
+                    }
+
+                    return { campo1, campo2, campo3, campo4 };
+                }
+            });
+
+            if (!value) {
+                console.log("Edição cancelada pelo usuário.");
+                return;
+            }
+
+            console.log("Dados para atualizar:", value);
+
+            await api.put(`eventos/${evento.idEvento}`, {
+                nomeEvento: value.campo1,
+                dataEvento: value.campo2,
+                idTipoEvento: value.campo3,
+                descricao: value.campo4,
+            });
+
+            console.log("Evento atualizado com sucesso!");
+            Swal.fire("Atualizado!", "Dados salvos com sucesso.", "success");
+            listarEvento();
+
+        } catch (error) {
+            console.log("Erro ao atualizar evento:", error);
+            Swal.fire("Erro!", "Não foi possível atualizar.", "error");
+        }
+    }
+
 
 
     useEffect(() => {
@@ -130,7 +189,6 @@ const CadastroDeEventos = () => {
                 setValorSelect2={setInstituicao}
 
                 valorDate={dataEvento}
-                
                 setValorDate={setDataEvento}
 
                 valorText={descricao}
@@ -144,9 +202,9 @@ const CadastroDeEventos = () => {
                 titulo="Nome"
                 tipoLista="Eventos"
                 lista={listaEvento}
-                dataEvento ={dataEvento}
+                dataEvento={dataEvento}
                 funcExcluir={deletarEvento}
-                
+                funcEditar={editarEvento}
             />
 
             <Footer />
