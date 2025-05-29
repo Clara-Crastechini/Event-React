@@ -37,6 +37,7 @@ const Lista = (props) => {
 
 
 
+
                                         <td data-cell={props.titulo}>{props.tipoLista == "TiposEventos" ? item.tituloTipoEvento : (props.tipoLista == "TiposUsuarios" ? item.tituloTipoUsuario : item.nomeEvento)}</td>
 
                                         <td style={{ display: props.visibilidade }}>{item.dataEvento}</td>
