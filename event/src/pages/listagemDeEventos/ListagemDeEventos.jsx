@@ -28,22 +28,22 @@ function ListagemEvento() {
                     <table>
                         <thead>
                             <tr className="cabecalho_listagem ">
-                                <th className="left">Título</th>
-                                <th className="left">Data Do Evento</th>
-                                <th className="left">Tipo Evento</th>
-                                <th className="rigth">Descrição</th>
-                                <th className="right">Comentários</th>
-                                <th className="right">Participar</th>
+                                <th className="">Título</th>
+                                <th className="">Data Do Evento</th>
+                                <th className="">Tipo Evento</th>
+                                <th className="">Descrição</th>
+                                <th className="">Comentários</th>
+                                <th className="">Participar</th>
                             </tr>
                         </thead>
                         {/* <hr className="divi" /> */}
                         <tbody>
                             <tr className="item_listagem espaco">
-                                <td className="left" data-cell="Título">xxxxxxxxx</td>
-                                <td className="left" data-cell="Tipo Evento"></td>
-                                <td className="rigth img_descricao"><img src={descricao} alt="" /></td>
-                                <td className="right" data-cell="Comentários"><img src={Comentario} alt="" /></td>
-                                <td className="right" data-cell="Participar"><Toggle/></td>
+                                <td className="" data-cell="Título">xxxxxxxxx</td>
+                                <td className="" data-cell="Tipo Evento"></td>
+                                <td className=" img_descricao"><img src={descricao} alt="" /></td>
+                                <td className="" data-cell="Comentários"><img src={Comentario} alt="" /></td>
+                                <td className="" data-cell="Participar"><Toggle/></td>
                             </tr>
                         </tbody>
                     </table>
