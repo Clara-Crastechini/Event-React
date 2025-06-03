@@ -4,9 +4,29 @@ import Comentario from "../../assets/img/Comentario.png";
 import "./ListagemDeEventos.css";
 import Toggle from "../../components/toggle/Toggle";
 import descricao from "../../assets/img/informacao(preto).png";
+import { useEffect, useState } from "react";
+import api from "../../Services/services";
+import { format } from "date-fns";
+import { Modal } from "../../components/modal/Modal";
+
 
 function ListagemEvento() {
 
+    const [listaEvento, setListaEvento] = useState([])
+
+    async function listarEventos() {
+        try {
+            const eventoListado = await api.get("eventos")
+            setListaEvento(eventoListado.data)
+
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    useEffect(() => {
+        listarEventos();
+    },[])
 
     return (
         <>
@@ -38,19 +58,29 @@ function ListagemEvento() {
                         </thead>
                         {/* <hr className="divi" /> */}
                         <tbody>
-                            <tr className="item_listagem espaco">
-                                <td className="" data-cell="Título">xxxxxxxxx</td>
-                                <td className="" data-cell="Tipo Evento"></td>
-                                <td className=" img_descricao"><img src={descricao} alt="" /></td>
-                                <td className="" data-cell="Comentários"><img src={Comentario} alt="" /></td>
-                                <td className="" data-cell="Participar"><Toggle/></td>
-                            </tr>
+                            {listaEvento.length > 0 ? (
+
+                                listaEvento.map((item) => (
+                                <tr className="item_listagem espaco">
+                                    <td className="" data-cell="Título">{item.nomeEvento}</td>
+                                    <td>{format(item.dataEvento, "dd/MM/yy")}</td>
+                                    <td className="" data-cell="Tipo Evento">{item.tiposEvento.tituloTipoEvento}</td>
+                                    <td className=" img_descricao"><img src={descricao} alt="" /></td>
+                                    <td className="" data-cell="Comentários"><img src={Comentario} alt="" /></td>
+                                    <td className="" data-cell="Participar"><Toggle/></td>
+                                </tr>
+                                )) 
+                            ) : (
+                                <p>Nenhum evento encontrado</p>
+                            )}
                         </tbody>
                     </table>
                 </div>
             </section>
 
             <Footer />
+
+            <Modal/>
         </>
     )
 }
