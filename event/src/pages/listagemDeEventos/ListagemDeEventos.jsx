@@ -44,24 +44,16 @@ function ListagemEvento() {
                 }
             });
 
-
-
             setListaEvento(eventosComPresencas);
-
-            
-            
 
         } catch (error) {
             console.log(error)
         }
     }
 
-
     useEffect(() => {
         listarEventos();
     }, [])
-
-
 
     function abrirModal(tipo, dados) {
         // tipo de modal
@@ -78,21 +70,31 @@ function ListagemEvento() {
     }
 
     async function manipularPresenca(idEvento, presenca, idPresenca) {
+        console.log(idEvento);
+        console.log(presenca);
+        console.log(idPresenca);
+        
         try {
             if(presenca && idPresenca != ""){
+                console.log("Aqui 01");
                 await api.put(`PresencasEventos/${idPresenca}`, {situacao: false})
                 Swal.fire('Removido!', 'Sua presença foi removida.', "success");
-
-            }else if(idPresenca != ""){
+                
+            }else if(idPresenca !== null){
+                console.log("Aqui 02");
                 await api.put(`PresencasEventos/${idPresenca}`, {situacao: true});
                 Swal.fire('Confirmada!', 'Sua presença foi confirmada', 'success');
             }else{
-                await api.post("PresencaEventos", {situacao: true, idUsuario: usuario.idUsuario, idEvento: idEvento})
+                console.log("Aqui 03");
+                console.log(usuario.idUsuario);
+                
+                await api.post("PresencasEventos", {situacao: true, idUsuario: usuario.idUsuario, idEvento: idEvento})
                 Swal.fire('Confirmado!', 'Sua presença foi confirmada.', 'success')
             }
 
 
             listarEventos();
+
         } catch (error) {
             console.log(error);
         }
@@ -118,7 +120,7 @@ function ListagemEvento() {
             <Header 
             nomeusu= "Aluno"/>
 
-            <section className="lista_evento">
+            <section className="lista_evento ">
                 <h1>Eventos</h1>
                 <hr className="linha_titulo" />
 
@@ -128,7 +130,7 @@ function ListagemEvento() {
                     <div className="left  seletor">
                         <label htmlFor="eventos"></label>
                         <select name="eventos" id="" onChange={(e) => setFiltroData([e.target.value])}>
-                            <option value="todos" disabled selected>Todos os eventos</option>
+                            <option value="todos" selected>Todos os eventos</option>
                             <option value="futuros">Somente futuros</option>
                             <option value="passados">Somente passados</option>
                         </select>
@@ -150,9 +152,9 @@ function ListagemEvento() {
                                 filtrarEventos() && filtrarEventos().map((item) => (
                                     <tr className="item_listagem espaco">
                                         <td className="" data-cell="Título">{item.nomeEvento}</td>
-                                        <td>{format(item.dataEvento, "dd/MM/yy")}</td>
+                                        <td data-cell="Data">{format(item.dataEvento, "dd/MM/yy")}</td>
                                         <td className="" data-cell="Tipo Evento">{item.tiposEvento.tituloTipoEvento}</td>
-                                        <td className=" img_descricao">                    
+                                        <td className=" img_descricao" data-cell="Descrição">                    
                                                 <img src={descricao} alt="" onClick={() => abrirModal("descricaoEvento", { descricao: item.descricao })}/>
                                         </td>
                                         <td className="" data-cell="Comentários">          

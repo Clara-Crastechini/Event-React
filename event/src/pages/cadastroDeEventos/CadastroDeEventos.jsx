@@ -67,7 +67,7 @@ const CadastroDeEventos = () => {
         if (evento.trim() !== "") {
             try {
                 await api.post("eventos", { nomeEvento: evento, idTipoEvento: tipoEvento, dataEvento: dataEvento, descricao: descricao, idInstituicao: instituicao });
-                alertar("success", "Deu certo");
+                alertar("success", "Evento cadastrado com sucesso!");
                 setEvento("");
                 setDataEvento("");
                 setDescricao("");
