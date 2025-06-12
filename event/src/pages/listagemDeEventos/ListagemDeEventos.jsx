@@ -9,6 +9,7 @@ import api from "../../Services/services";
 import { format } from "date-fns";
 import { Modal } from "../../components/modal/Modal";
 import Swal from "sweetalert2";
+import { useAuth } from "../../contexts/AuthContext";
 
 
 function ListagemEvento() {
@@ -19,15 +20,16 @@ function ListagemEvento() {
     const [modalAberto, setModalAberto] = useState(false);
 
     const [filtroData, setFiltroData] = useState(["todos"])
+    const {usuario} = useAuth();
 
-    const [usuarioId, setUsuarioId] = useState("2FA9CD6F-466A-4C2A-A756-712360D23B0F")
+    // const [usuarioId, setUsuarioId] = useState("2FA9CD6F-466A-4C2A-A756-712360D23B0F")
 
     async function listarEventos() {
         try {
             const resposta = await api.get("eventos")
             const todosOsEventos = resposta.data;
 
-            const respostaPresenca = await api.get("PresencasEventos/ListarMinhas/"+usuarioId)
+            const respostaPresenca = await api.get("PresencasEventos/ListarMinhas/"+ usuario.idUsuario)
             const minhasPresencas = respostaPresenca.data;
 
             const eventosComPresencas = todosOsEventos.map((atualEvento) => {
@@ -46,7 +48,6 @@ function ListagemEvento() {
 
             setListaEvento(eventosComPresencas);
 
-            console.log(usuarioId);
             
             
 
@@ -86,7 +87,7 @@ function ListagemEvento() {
                 await api.put(`PresencasEventos/${idPresenca}`, {situacao: true});
                 Swal.fire('Confirmada!', 'Sua presença foi confirmada', 'success');
             }else{
-                await api.post("PresencaEventos", {situacao: true, idUsuario: usuarioId, idEvento: idEvento})
+                await api.post("PresencaEventos", {situacao: true, idUsuario: usuario.idUsuario, idEvento: idEvento})
                 Swal.fire('Confirmado!', 'Sua presença foi confirmada.', 'success')
             }
 
@@ -114,7 +115,8 @@ function ListagemEvento() {
 
     return (
         <>
-            <Header />
+            <Header 
+            nomeusu= "Aluno"/>
 
             <section className="lista_evento">
                 <h1>Eventos</h1>

@@ -54,7 +54,7 @@ const Lista = (props) => {
                                             <img src={Excluir} alt="lixeira" onClick={() => props.funcExcluir(item)} className="botao_edicao" />
                                         </td>
                                         <td data-cell="Descricao" style={{ display: props.visibilidade }}>
-                                            <img src={Descricao} alt="informacao" onClick={() => props.funcListar(item)} className="botao_edicao" />
+                                            <img src={Descricao} alt="informacao" onClick={() => props.funcDescricao(item)} className="botao_edicao" />
                                         </td>
                                     </tr>
                                 ))

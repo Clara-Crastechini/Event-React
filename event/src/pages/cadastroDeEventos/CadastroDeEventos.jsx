@@ -163,6 +163,15 @@ const CadastroDeEventos = () => {
 
 
 
+     async function descricaoEvento(item) {
+        Swal.fire({
+            title: "Descrição do evento",
+            text: item.descricao || "Nenhuma descricao disponivel",
+            icon: 'info',
+            confirmButtonText: 'Fechar'
+        })
+    }
+
     useEffect(() => {
         listarTipoEvento();
         listarEvento();
@@ -172,7 +181,8 @@ const CadastroDeEventos = () => {
 
     return (
         <>
-            <Header />
+            <Header 
+            nomeusu = "Administrador" />
 
             <Cadastro
                 img_banner={banner_cadastroEvento}
@@ -205,6 +215,7 @@ const CadastroDeEventos = () => {
                 dataEvento={dataEvento}
                 funcExcluir={deletarEvento}
                 funcEditar={editarEvento}
+                funcDescricao={descricaoEvento}
             />
 
             <Footer />

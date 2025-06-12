@@ -120,7 +120,8 @@ const TipoUsuarios = () => {
 
     return (
         <>
-            <Header />
+            <Header 
+            nomeusu ="Administrador"/>
 
             <Cadastro
                 img_banner={banner_cadastroUsuario}

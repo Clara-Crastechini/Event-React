@@ -124,7 +124,8 @@ const CadastroTipoDeEvento = () => {
 
     return (
         <>
-            <Header />
+            <Header 
+            nomeusu="Administrador"/>
 
             <Cadastro
                 img_banner={banner_cadastrotipoevento}
