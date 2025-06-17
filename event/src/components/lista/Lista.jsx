@@ -2,7 +2,7 @@ import "./Lista.css";
 import Editar from "../../assets/img/Editar.png";
 import Excluir from "../../assets/img/Excluir.png";
 import Descricao from "../../assets/img/descricao.png";
-
+import { format } from "date-fns";
 
 
 const Lista = (props) => {
@@ -20,13 +20,13 @@ const Lista = (props) => {
                                 <th>{props.titulo}</th>
                                 <th style={{ display: props.visibilidade }}>Data do Evento</th>
                                 <th style={{ display: props.visibilidade }}>Tipo Evento</th>
-                                <th>Editar</th>
-                                <th>Deletar</th>
+                                <th style={{ display: props.visibilidade }}>Editar</th>
+                                <th style={{ display: props.visibilidade }}>Deletar</th>
                                 <th style={{ display: props.visibilidade }}>Descrição</th>
                             </tr>
                         </thead>
                         {/* <hr className="linha_divisoria"/> */}
-                        <tbody>
+                        <tbody>;
                             {props.lista && props.lista.length > 0 ? (
                                 props.lista.map((item) => (
                                     <tr className="item_lista"
@@ -40,17 +40,17 @@ const Lista = (props) => {
 
                                         <td data-cell={props.titulo}>{props.tipoLista == "TiposEventos" ? item.tituloTipoEvento : (props.tipoLista == "TiposUsuarios" ? item.tituloTipoUsuario : item.nomeEvento)}</td>
 
-                                        <td style={{ display: props.visibilidade }}>{item.dataEvento}</td>
+                                        <td style={{ display: props.visibilidade }}>{format(item.dataEvento, "dd/MM/yy")}</td>
 
                                         <td data-cell="Tipo Evento" style={{ display: props.visibilidade }}>{item.tiposEvento?.tituloTipoEvento}</td>
 
-                                        <td data-cell="Editar">
+                                        <td data-cell="Editar" style={{ display: props.visibilidade }}>
                                             <img src={Editar}
                                                 alt="caneta"
                                                 onClick={() => props.funcEditar(item)}
                                                 className="botao_edicao" />
                                         </td>
-                                        <td data-cell="Excluir">
+                                        <td data-cell="Excluir" style={{ display: props.visibilidade }}>
                                             <img src={Excluir} alt="lixeira" onClick={() => props.funcExcluir(item)} className="botao_edicao" />
                                         </td>
                                         <td data-cell="Descricao" style={{ display: props.visibilidade }}>

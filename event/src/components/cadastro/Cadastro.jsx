@@ -44,6 +44,8 @@ const Cadastro = (props) => {
                                 onChange={(e) => props.setValorSelect2(e.target.value)}>
                                 <option value="">Senai</option>
                             </select>
+                        </div>
+                        <div className="campo_cad_evento" style={{ display: props.visible }}>
                             <textarea name="" id="" placeholder="Descrição" className="descricao"
                                 value={props.valorText}
                                 onChange={(e) => props.setValorText(e.target.value)}></textarea>

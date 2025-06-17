@@ -5,6 +5,7 @@ import CadastroTipoDeEvento from "../pages/cadastroTipoDeEvento/CadastroTipoDeEv
 import TipoUsuarios from "../pages/tipoUsuarios/TipoUsuarios";
 import ListagemDeEventos from "../pages/listagemDeEventos/ListagemDeEventos";
 import { useAuth } from "../contexts/AuthContext";
+import Home from "../pages/home/Home";
 
 
 const Privado = (props) => {
@@ -31,7 +32,7 @@ const Rotas = () => {
     return(
         <BrowserRouter>
             <Routes>
-                <Route path="/" element={<Login/>} exact />
+                <Route path="/" element={<Login/>} exact />e
                 {/* <Route path="/Eventos" element={<CadastroDeEventos/>} exact />
                 <Route path="/CadastroTipoDeEvento" element={<CadastroTipoDeEvento/>} exact />
                 <Route path="/TipoUsuarios" element={<TipoUsuarios/>} exact />
@@ -40,7 +41,8 @@ const Rotas = () => {
                 <Route element={<Privado tipoPermitido="admin" item={CadastroTipoDeEvento}/>} path="/CadastroTipoDeEvento"  />
                 <Route element={<Privado tipoPermitido="admin" item={TipoUsuarios}/>} path="/TipoUsuarios"  />
                 <Route element={<Privado tipoPermitido="aluno" item={ListagemDeEventos}/>} path="/ListagemDeEventos"  />
-            </Routes>
+                <Route  path="/TelaHome" element={<Home/>}/>
+             </Routes>
         </BrowserRouter>
     )
 }

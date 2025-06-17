@@ -26,6 +26,7 @@ const Login = () => {
                 const resposta = await api.post("Login", usuario);
                 const token = resposta.data.token
 
+                
                 if (token) {
                     const tokenDecodificado = userDecodeToken(token);
                     //console.log("Token decodificado");

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import Lixeira from "../../assets/img/lixeiravermelho.png"
+import Lixeira from "../../assets/img/lixieravermelha.png"
 import api from '../../Services/services'
 import "./Modal.css"
 import { useAuth } from "../../contexts/AuthContext";
@@ -55,15 +55,15 @@ export const Modal = (props) => {
         let timerInterval;
         Swal.fire({
             title: "Aguarde!",
-            html: "I will close in <b></b> milliseconds.",
-            timer: 200,
+            html: "Alguns segundos!",
+            timer: 2000,
             timerProgressBar: true,
             didOpen: () => {
                 Swal.showLoading();
                 const timer = Swal.getPopup().querySelector("b");
                 timerInterval = setInterval(() => {
                     timer.textContent = `${Swal.getTimerLeft()}`;
-                }, 100);
+                }, 3000);
             },
             willClose: () => {
                 clearInterval(timerInterval);

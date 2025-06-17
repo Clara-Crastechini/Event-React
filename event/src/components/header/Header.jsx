@@ -37,8 +37,8 @@ const Header = (props) => {
 
                 <nav className="nav_header">
                     <Link className="link_header" to="/">Home</Link>
-                    <Link className="link_header" to="/Eventos">Eventos</Link>
-                    <Link className="link_header" to="/TipoUsuarios">Usuarios</Link>
+                    <Link className="link_header" to="/Eventos" style={{ display: props.visibilidade }}>Eventos</Link>
+                    <Link className="link_header" to="/TipoUsuarios" style={{ display: props.visibilidade }}>Usuarios</Link>
                 </nav>
 
                 <nav className="nav_header admin">
