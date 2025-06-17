@@ -16,6 +16,26 @@ export const Modal = (props) => {
 
 
 
+    
+        function alertar(icone, mensagem){
+            const Toast = Swal.mixin({
+                toast: true,
+                position: "top-end",
+                showConfirmButton: false,
+                timer: 3000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                    toast.onmouseenter = Swal.stopTimer;
+                    toast.onmouseleave = Swal.resumeTimer;
+                }
+            });
+            Toast.fire({
+                icon: icone,
+                title: mensagem
+            })
+        }
+    
+
     async function listarComentarios() {
         try {
             const resposta = await api.get(`ComentariosEventos/ListarSomenteExibe?id=${props.idEvento}`)
@@ -51,7 +71,7 @@ export const Modal = (props) => {
         }).then(async (result) => {
             /* Read more about handling dismissals below */
             if (result.dismiss === Swal.DismissReason.timer) {
-                console.log("I was closed by the timer");
+                // console.log("I was closed by the timer");
                 try {
                     await api.post("comentariosEventos", {
                         idUsuario: usuario.idUsuario,
@@ -59,7 +79,8 @@ export const Modal = (props) => {
                         Descricao: comentario
                     })
                 } catch (error) {
-                    console.log(error);
+                    console.log(error.response.data);
+                    alertar("error", error.response.data)
                 }
 
 

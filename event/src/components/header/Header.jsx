@@ -3,6 +3,7 @@ import Logo from "../../assets/img/logo1.svg";
 import { Link, Navigate, redirect, useNavigate } from "react-router-dom"
 import Sair from "../../assets/img/Vector.png"
 import Swal from "sweetalert2";
+import secureLocalStorage from "react-secure-storage";
 
 const Header = (props) => {
     
@@ -21,6 +22,7 @@ const Header = (props) => {
             confirmButtonText: "Sim, sair."
         }).then((result) => {
             if (result.isConfirmed) {
+                secureLocalStorage.removeItem("tokenLogin");
                 navigate("/")
             }
         });
