@@ -2,14 +2,17 @@ import React, { useEffect, useState } from 'react'
 import Lixeira from "../../assets/img/lixeiravermelho.png"
 import api from '../../Services/services'
 import "./Modal.css"
-
+import { useAuth } from "../../contexts/AuthContext";
+import Swal from 'sweetalert2';
 
 export const Modal = (props) => {
 
     const [comentarios, setComentarios] = useState([]);
 
     const [novoComentario, setNovoComentario] = useState("");
-    const [usuarioId, setUsuarioId] = useState("");
+    // const [usuarioId, setUsuarioId] = useState("");
+
+    const { usuario } = useAuth();
 
 
 
@@ -25,22 +28,43 @@ export const Modal = (props) => {
 
     useEffect(() => {
         listarComentarios();
-    },[comentarios])
+    }, [comentarios])
 
 
     async function cadastrarComentario(comentario) {
-            try {
-                await api.post("comentariosEventos", {
-                    idUsuario: usuarioId,
-                    idEvento: props.idEvento,
-                    Descricao: comentario
-
-                })
-            } catch (error) {
-                console.log(error);
-                
+        let timerInterval;
+        Swal.fire({
+            title: "Aguarde!",
+            html: "I will close in <b></b> milliseconds.",
+            timer: 200,
+            timerProgressBar: true,
+            didOpen: () => {
+                Swal.showLoading();
+                const timer = Swal.getPopup().querySelector("b");
+                timerInterval = setInterval(() => {
+                    timer.textContent = `${Swal.getTimerLeft()}`;
+                }, 100);
+            },
+            willClose: () => {
+                clearInterval(timerInterval);
             }
-        
+        }).then(async (result) => {
+            /* Read more about handling dismissals below */
+            if (result.dismiss === Swal.DismissReason.timer) {
+                console.log("I was closed by the timer");
+                try {
+                    await api.post("comentariosEventos", {
+                        idUsuario: usuario.idUsuario,
+                        idEvento: props.idEvento,
+                        Descricao: comentario
+                    })
+                } catch (error) {
+                    console.log(error);
+                }
+
+
+            }
+        });
     }
 
 
@@ -63,22 +87,22 @@ export const Modal = (props) => {
                         <p>{props.descricao}</p>
                     ) : (
                         <>
-                            {comentarios.map((item) => 
+                            {comentarios.map((item) =>
                                 <div key={item.idComentarioEvento}>
                                     <strong>
                                         {item.usuario.nomeUsuario}
                                     </strong>
-                                    <img src={Lixeira} alt="Deletar" 
-                                    onClick={() => deletarComentario(item.idComentarioEvento)}/>
+                                    <img src={Lixeira} alt="Deletar"
+                                        onClick={() => deletarComentario(item.idComentarioEvento)} />
                                     <p>{item.descricao}</p>
                                     <hr />
                                 </div>
                             )}
                             <div>
                                 <input type="text" placeholder="Escreva seu comentário..."
-                                value={novoComentario}
-                                onChange={(e) => setNovoComentario(e.target.value)} />
-                                <button onClick={() => cadastrarComentario(novoComentario)}>Cadastrar</button>
+                                    value={novoComentario}
+                                    onChange={(e) => setNovoComentario(e.target.value)} />
+                                <button className='botao_cadas' onClick={() => cadastrarComentario(novoComentario)} >Cadastrar</button>
                             </div>
                         </>
                     )}

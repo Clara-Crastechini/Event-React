@@ -95,7 +95,7 @@
 
 
 .botao button {
-    background-color: #c2185b;
+    background-color: #610315;
     color: #fff;
     padding: 10px 20px;
     border: none;
@@ -106,16 +106,16 @@
 
 
 .botao button:hover {
-    background-color: #ad1457;
+    background-color: #610315;
 }
 
 
-/* .botao_cadas{
-    background-color: #B51D44;
+.botao_cadas{
+    background-color: #610315;
     width: 100%;
     height: 40px;
     margin-top: 15px;
     border-radius: 6px;
     color: white;
     border: none;
-} */
+}

@@ -87,8 +87,9 @@ const CadastroDeEventos = () => {
             title: 'Tem certeza?',
             text: "Essa ação não poderá ser desfeita!",
             icon: 'warning',
+            iconColor: "#610315",
             showCancelButton: true,
-            confirmButtonColor: "#B51d44",
+            confirmButtonColor: "#610315",
             cancelButtonColor: "#000000",
             confirmButtonText: 'Sim, apagar',
             cancelButtonText: 'Cancelar'
@@ -120,7 +121,9 @@ const CadastroDeEventos = () => {
       `,
                 showCancelButton: true,
                 confirmButtonText: "Salvar",
+                confirmButtonColor: "#610315",
                 cancelButtonText: "Cancelar",
+                cancelButtonColor: "#000000",
                 focusConfirm: false,
                 preConfirm: () => {
                     const campo1 = document.getElementById("campo1").value;
@@ -168,7 +171,9 @@ const CadastroDeEventos = () => {
             title: "Descrição do evento",
             text: item.descricao || "Nenhuma descricao disponivel",
             icon: 'info',
-            confirmButtonText: 'Fechar'
+            iconColor: "#610315",
+            confirmButtonText: 'Fechar',
+            confirmButtonColor: "#610315"
         })
     }
 

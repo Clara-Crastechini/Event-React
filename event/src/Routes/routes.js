@@ -8,23 +8,23 @@ import { useAuth } from "../contexts/AuthContext";
 
 
 const Privado = (props) => {
-    // const {usuario} = useAuth();
-    // // token, idUsuario, tipoUsuario
+    const {usuario} = useAuth();
+    // token, idUsuario, tipoUsuario
 
     // // se nao estiver autenticar, manda login
-    // if(!usuario){
-    //     return <Navigate to="/" />;
-    // }
+    if(!usuario){
+        return <Navigate to="/" />;
+    }
 
     // // se o tipo de usuario nao for permitido, bloqueia
-    // if (usuario.tipoUsuario !== props.tipoPermitido) {
-    //     // ir para a tela de nao encontrada!
-    //     return <Navigate to="/" />;
-    // }
+    if (usuario.tipoUsuario !== props.tipoPermitido) {
+        // ir para a tela de nao encontrada!
+        return <Navigate to="/" />;
+    }
 
 
     // // Senao, renderiza o componente passado
-    // return <props.item />;
+    return <props.item />;
 }
 
 const Rotas = () => {
@@ -32,14 +32,14 @@ const Rotas = () => {
         <BrowserRouter>
             <Routes>
                 <Route path="/" element={<Login/>} exact />
-                <Route path="/Eventos" element={<CadastroDeEventos/>} exact />
+                {/* <Route path="/Eventos" element={<CadastroDeEventos/>} exact />
                 <Route path="/CadastroTipoDeEvento" element={<CadastroTipoDeEvento/>} exact />
                 <Route path="/TipoUsuarios" element={<TipoUsuarios/>} exact />
-                <Route path="/ListagemDeEventos" element={<ListagemDeEventos/>} exact />
-                {/* <Route element={<Privado tipoPermitido="admin" item={CadastroDeEventos} />} path="/Eventos"  />
+                <Route path="/ListagemDeEventos" element={<ListagemDeEventos/>} exact /> */}
+                <Route element={<Privado tipoPermitido="admin" item={CadastroDeEventos} />} path="/Eventos"  />
                 <Route element={<Privado tipoPermitido="admin" item={CadastroTipoDeEvento}/>} path="/CadastroTipoDeEvento"  />
                 <Route element={<Privado tipoPermitido="admin" item={TipoUsuarios}/>} path="/TipoUsuarios"  />
-                <Route element={<Privado tipoPermitido="aluno" item={ListagemDeEventos}/>} path="/ListagemDeEventos"  /> */}
+                <Route element={<Privado tipoPermitido="aluno" item={ListagemDeEventos}/>} path="/ListagemDeEventos"  />
             </Routes>
         </BrowserRouter>
     )

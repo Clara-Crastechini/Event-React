@@ -70,7 +70,7 @@ const CadastroTipoDeEvento = () => {
         const { value: novoTipoEvento } = await Swal.fire({
             title: "Modifique seu Tipo Evento",
             input: "text",
-            confirmButtonColor: '#B51D44',
+            confirmButtonColor: '#610315',
             cancelButtonColor: '#000000',
             inputLabel: "Novo Tipo Evento",
             inputValue: tiposEventos.tituloTipoEvento,
@@ -100,7 +100,7 @@ const CadastroTipoDeEvento = () => {
             text: "Essa ação não poderá ser desfeita!",
             icon: 'warning',
             showCancelButton: true,
-            confirmButtonColor: "#B51d44",
+            confirmButtonColor: "#610315",
             cancelButtonColor: "#000000",
             confirmButtonText: 'Sim, apagar',
             cancelButtonText: 'Cancelar'

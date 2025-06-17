@@ -20,6 +20,7 @@ function ListagemEvento() {
     const [modalAberto, setModalAberto] = useState(false);
 
     const [filtroData, setFiltroData] = useState(["todos"])
+    
     const {usuario} = useAuth();
 
     // const [usuarioId, setUsuarioId] = useState("2FA9CD6F-466A-4C2A-A756-712360D23B0F")
