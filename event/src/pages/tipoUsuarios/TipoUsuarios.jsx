@@ -42,6 +42,8 @@ const TipoUsuarios = () => {
                 alertar("success", "Cadastro realizado com sucesso!");
                 setTipoUsuario("");
 
+                listarTipoUsuario();
+
             } catch (error) {
                 alertar("error", "Entre em contato com o suporte.");
 
@@ -56,6 +58,9 @@ const TipoUsuarios = () => {
     async function listarTipoUsuario() {
         try {
             const resposta = await api.get("TiposUsuarios");
+
+            console.log(resposta.data);
+            
             setListaTipoUsuario(resposta.data);
         } catch (error) {
             alertar("error", "Entre em contato com o suporte.");
@@ -78,6 +83,7 @@ const TipoUsuarios = () => {
             if (result.isConfirmed) {
                 await api.delete(`tiposUsuarios/${id.idTipoUsuario}`);
                 alertar("success", "TipoUsuario Excluido!");
+                listarTipoUsuario();
             }
         }).catch(error => {
             console.log(error);
@@ -105,6 +111,7 @@ const TipoUsuarios = () => {
                 await api.put(`tiposUsuarios/${tiposUsuarios.idTipoUsuario}`,
                     { tituloTipoUsuario: novoTipoUsuario });
                 alertar("success", "Tipo Evento Modificado!")
+                listarTipoUsuario();
             } catch (error) {
 
             }
@@ -116,7 +123,7 @@ const TipoUsuarios = () => {
 
     useEffect(() => {
         listarTipoUsuario();
-    }, [listaTipoUsuario])
+    }, [])
 
 
     return (
@@ -137,6 +144,7 @@ const TipoUsuarios = () => {
             <Lista
                 titulo_lista="Tipo Usuario"
                 titulo="Titulo"
+                visibilidade1="none"
                 visibilidade="none"
 
                 tipoLista="TiposUsuarios"

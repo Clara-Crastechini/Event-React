@@ -25,6 +25,27 @@ function ListagemEvento() {
 
     // const [usuarioId, setUsuarioId] = useState("2FA9CD6F-466A-4C2A-A756-712360D23B0F")
 
+
+     function alertar(icone, mensagem){
+            const Toast = Swal.mixin({
+                toast: true,
+                position: "top-end",
+                showConfirmButton: false,
+                timer: 3000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                    toast.onmouseenter = Swal.stopTimer;
+                    toast.onmouseleave = Swal.resumeTimer;
+                }
+            });
+            Toast.fire({
+                icon: icone,
+                title: mensagem
+            })
+        }
+
+
+
     async function listarEventos() {
         try {
             const resposta = await api.get("eventos")
@@ -92,7 +113,7 @@ function ListagemEvento() {
                     await api.post("PresencasEventos", { situacao: true, idUsuario: usuario.idUsuario, idEvento: idEvento })
                     Swal.fire('Confirmado!', 'Sua presença foi confirmada.', 'success')
                 }else{
-                    alert("ixi nao pode")
+                    alertar("error", "O evento já ocorreu!")
                 }
             }
 

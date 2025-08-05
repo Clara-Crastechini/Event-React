@@ -33,15 +33,16 @@ const Rotas = () => {
         <BrowserRouter>
             <Routes>
                 <Route path="/" element={<Login/>} exact />e
-                {/* <Route path="/Eventos" element={<CadastroDeEventos/>} exact />
-                <Route path="/CadastroTipoDeEvento" element={<CadastroTipoDeEvento/>} exact />
-                <Route path="/TipoUsuarios" element={<TipoUsuarios/>} exact />
-                <Route path="/ListagemDeEventos" element={<ListagemDeEventos/>} exact /> */}
+            
+            
+
+                <Route path="/ListagemDeEventos" element={<ListagemDeEventos/>} exact />
                 <Route element={<Privado tipoPermitido="admin" item={CadastroDeEventos} />} path="/Eventos"  />
                 <Route element={<Privado tipoPermitido="admin" item={CadastroTipoDeEvento}/>} path="/CadastroTipoDeEvento"  />
                 <Route element={<Privado tipoPermitido="admin" item={TipoUsuarios}/>} path="/TipoUsuarios"  />
                 <Route element={<Privado tipoPermitido="aluno" item={ListagemDeEventos}/>} path="/ListagemDeEventos"  />
-                <Route  path="/TelaHome" element={<Home/>}/>
+                <Route  path="/TelaHome" element={<Home/>}/>    
+                <Route path="/CadastroTipoDeEvento" element={<CadastroTipoDeEvento/>} exact />
              </Routes>
         </BrowserRouter>
     )

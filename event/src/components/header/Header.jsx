@@ -39,6 +39,7 @@ const Header = (props) => {
                     <Link className="link_header" to="/">Home</Link>
                     <Link className="link_header" to="/Eventos" style={{ display: props.visibilidade }}>Eventos</Link>
                     <Link className="link_header" to="/TipoUsuarios" style={{ display: props.visibilidade }}>Usuarios</Link>
+                    <Link className="link_header" to="/CadastroTipoDeEvento"  style={{ display: props.visibilidade }}> Tipos Eventos</Link>
                 </nav>
 
                 <nav className="nav_header admin">
